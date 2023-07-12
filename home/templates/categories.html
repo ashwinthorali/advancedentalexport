@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block seo %}    
+<title></title>
+<meta name="description" content="" />
+<link rel="canonical" href="https://www.myoneblog.com/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://www.myoneblog.com/" />
+<meta property="og:site_name" content="My One Blog" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:title" content="" />
+
+{% endblock seo %}
+
+{% block css %}
+{% endblock css %}
+    
+
+
+{% block body %}
+<div class="breadcrumb-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="breadcrumb-inner">
+					<div class="content">
+						<h3 class="title">My One Blog</h3>
+						<ul class="page-list">
+							<li class="list-item"><a href="{% url 'home:home' %}">Home</a></li>
+							<li class="list-item"><a href="#"><h1 style="font-size: 16px;">All Categories</h1></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="blog-grid-wrapper three-column blog-grid-fashion" data-padding-top="100" data-padding-bottom="100">
+	<div class="container">
+		<div class="row">
+			
+            {% for ie in data %}
+            <div class="col-md-6 col-lg-4">
+				<div class="blog-grid-style-01">
+					<div class="img-box"><img src="{{ie.image.url}}" alt="{{ie.h1}}"></div>
+					<div class="content">
+						<div class="post-meta">
+							<ul class="post-meta-list">
+								<li class="post-meta-item"><a href="#"><i class="las la-tag icon"></i> <span class="text">Total Posts: <b>{{ie.tot}}</b> </span></a></li>
+							</ul>
+						</div>
+						<h4 class="title"><a href="{% url 'home:categoriesd' ie.slug %}">{{ie.category}}</a></h4></div>
+				</div>
+			</div>
+            {% endfor %}
+                
+			
+		</div>
+        {% if data.has_other_pages %}
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="pagination" data-padding-top="50">
+					
+                    <ul class="pagination-list">
+						{% if data.has_previous %}
+                        <li><a href="?page={{ data.previous_page_number }}" class="page-number disable left-arrow"><i class="las la-angle-left"></i></a></li>
+					    {% else %}
+
+                    	<li><a href="javascript:void(0);" class="page-number disable left-arrow"><i class="las la-angle-left"></i></a></li>
+                        {% endif %}
+                        {% for i in data.paginator.page_range %}
+                          {% if data.number == i %}
+                          <li><span class="page-number current">{{i}}</span></li>
+                          {% else %}  
+                    
+                        <li><a href="?page={{ i }}" class="page-number">{{i}}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if data.has_next %}
+                        <li><a href="?page={{ data.next_page_number }}" class="page-number able right-arrow"><i class="las la-angle-right"></i></a></li>
+					    {% else %}
+
+                        <li><a href="javascript:void(0);" class="page-number able right-arrow"><i class="las la-angle-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+
+
+				</div>
+			</div>
+		</div>
+        {% endif %}
+	</div>
+</div>
+{% endblock body %}
+    
+
+
+{% block javascript %}
+		
+{% endblock javascript %}
+    

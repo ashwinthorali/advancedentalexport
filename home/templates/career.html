@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block seo %}    
+<title>Contact - Advance Dental Export</title>
+<meta name="description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<link rel="canonical" href="https://advancedentalexport.com/contact/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Contact - Advance Dental Export" />
+<meta property="og:description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<meta property="og:url" content="https://advancedentalexport.com/" />
+<meta property="og:site_name" content="@advancedentalexport" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<meta name="twitter:title" content="Contact - Advance Dental Export" />
+
+{% endblock seo %}
+
+{% block css %}
+{% endblock css %}
+    
+
+
+{% block body %}
+
+    <!-- BREADCRUMB
+			============================================= -->
+			<div id="breadcrumb" class="division">
+				<div class="container">
+					<div class="row">						
+						<div class="col">
+							<div class=" breadcrumb-holder">
+
+								<!-- Breadcrumb Nav -->
+								<nav aria-label="breadcrumb">
+								  	<ol class="breadcrumb">
+								    	<li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+								    	<li class="breadcrumb-item active"><a href="#">Career</a></li>
+								    	
+								  	</ol>
+								</nav>
+
+								<!-- Title -->
+								<h4 class="h4-sm steelblue-color">Job Openings</h4>
+
+							</div>
+						</div>
+					</div>  <!-- End row -->	
+				</div>	<!-- End container -->		
+			</div>	<!-- END BREADCRUMB -->	
+
+
+			<!-- CONTACTS-1
+			============================================= -->
+			<section id="contacts-1" class="wide-60 contacts-section division">				
+				<div class="container">
+					<!-- SECTION TITLE -->	
+					<div class="row">	
+						<div class="col-lg-10 offset-lg-1 section-title">	
+
+							<!-- Title 	-->	
+							<h3 class="h3-md steelblue-color">Join The Advance Team!!
+                            </h3>	
+
+							<!-- Text -->
+							<p> Fill up the form and we will reply you with 24 hours.
+							</p>
+								
+						</div>
+					</div>
+					<div class="row">	
+						<!-- CONTACTS INFO -->
+		 				<div class="col-md-5 col-lg-4">
+
+		 					<!-- General Information -->
+		 					<div class="contact-box mb-40">
+								
+                                <p>
+                                    Advance Dental Export is one of India’s finest and fully digitalized Dental Labs. Our work speaks for us. At Advance Dental Export, we believe in creating a life and culture of operating with openness, honesty and with the highest degree of ethics and integrity. We teach our people to follow these practices and values.
+                                </p>
+                                <p>
+                                    Over here you will get hands-on experience with industries expert. Apart from this we offers the best of the workspaces in the industry. We also value the diverse mix of our employees and are committed to their welfare. Also we offer the best campus and amenities, and benefits.
+
+
+                                </p>
+                                <p>
+                                    <b>Join The Advance Team!!
+
+                                    </b>
+                                </p>
+								<p>Please attach your CV below and submit the form or mail us at:
+                                     <a href="mailto:hr@advancedentalexport.com" class="blue-color">
+                                        hr@advancedentalexport.com
+
+								</a></p>
+		 					</div>
+
+		 				
+						</div>	<!-- END CONTACTS INFO -->
+
+
+						<!-- CONTACT FORM -->	
+				 		<div class="col-md-7 col-lg-8">
+				 			<div class="form-holder mb-40">
+				 				<form name="contactForm" class="row contact-form2">
+				                                            
+					                <!-- Contact Form Input -->
+					                <div id="input-name" class="col-md-12 col-lg-6">
+					                	<input type="text" name="name" class="form-control name" placeholder="Enter Your Name*" required> 
+					                </div>
+					                        
+					                <div id="input-email" class="col-md-12 col-lg-6">
+					                	<input type="text" name="email" class="form-control email" placeholder="Enter Your Email*" required> 
+					                </div>
+
+					                <div id="input-phone" class="col-md-12 col-lg-6">
+					                	<input type="tel" name="phone" class="form-control phone" placeholder="Enter Your Phone Number*" required> 
+					                </div>	
+
+					               
+
+					                <div id="input-subject" class="col-lg-6">
+					                	<input type="text" name="subject" class="form-control subject" placeholder="Subject*" required> 
+					                </div>					                          
+					                        
+					                <div id="input-message" class="col-lg-12 input-message">
+					                	<textarea class="form-control message" name="message" rows="6" placeholder="Your Message ..." required></textarea>
+					                </div> 
+					                                            
+					                <!-- Contact Form Button -->
+					                <div class="col-lg-12 mt-15 form-btn">  
+					                	<button type="submit" class="btn btn-blue blue-hover submit">Send Your Message</button> 
+					                </div>
+					                                                              
+					                <!-- Contact Form Message -->
+					                <div class="col-lg-12 contact-form-msg text-center">
+					                	<div class="sending-msg"><span class="loading"></span></div>
+					                </div>  
+				                                              
+				                </form> 
+
+				 			</div>	
+				 		</div> 	<!-- END CONTACT FORM -->	
+
+
+				 	</div>	<!-- End row -->			  
+ 
+
+				</div>	   <!-- End container -->		
+			</section>	<!-- END CONTACTS-1 -->
+
+
+
+
+{% endblock body %}
+    
+
+
+{% block javascript %}
+		
+{% endblock javascript %}
+    

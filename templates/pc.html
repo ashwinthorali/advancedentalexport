@@ -1,0 +1,147 @@
+{% load static %}
+<!-- NAVIGATION MENU -->
+<div class="wsmainfull menu clearfix">
+    <div class="wsmainwp clearfix">
+
+        <!-- LOGO IMAGE -->
+        <!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 360 x 80 pixels) -->
+        <div class="desktoplogo"><a href="{% url 'home:home' %}"><img src="{% static 'img/logo.png' %}"  width="auto" height="40" alt="header-logo"></a></div>
+
+        
+        <!-- MAIN MENU -->
+          <nav class="wsmenu clearfix">
+            <ul class="wsmenu-list">
+
+
+                <!-- DROPDOWN MENU -->
+                <li aria-haspopup="true"><a href="{% url 'home:home' %}">Home </a>
+                   </li>	<!-- END DROPDOWN MENU -->
+
+                   <li aria-haspopup="true"><a href="{% url 'home:about' %}">About </a>
+                   </li>	<!-- END DROPDOWN MENU -->
+                
+                   <li aria-haspopup="true"><span class="wsmenu-click"><i class="wsmenu-arrow"></i></span><a href="#">
+                    Products <span class="wsarrow"></span></a>
+                    <ul class="sub-menu">
+                       
+                       {% for ie in product  %}
+                       <li aria-haspopup="true"><a href="{% url 'blogd' ie.slug %}">{{ie.breadcrumb}}</a>
+                       
+                       {% if ie.sub %}
+                       <ul class="sub-menu">
+                        
+                        {% for i in ie.sub %}
+                        <li aria-haspopup="true"><a href="{% url 'blogd' ie.slug %}">{{ie.breadcrumb}}</a>
+                        </li>
+                        {% endfor %}
+                            
+                     </ul>
+                       {% endif %}
+                        
+                        </li>
+                       
+                       {% endfor %}
+                        
+                    </ul>
+               </li>
+                
+
+               <li><a href="https://ultimatesmiledesign.com">USD</a></li>
+                  <!-- MEGAMENU -->
+                  <li aria-haspopup="true"><a href="#">Resource Center <span class="wsarrow"></span></a>
+                    <div class="wsmegamenu clearfix">
+                         <div class="container">
+                               <div class="row">
+
+
+                                   <!-- MEGAMENU QUICK LINKS -->
+                                   <ul class="col-lg-3 col-md-12 col-xs-12 link-list">
+                                    <li class="title">Quick Links:</li>
+                                    <li><a href="{% url 'blog:blog' %}">Blogs</a></li>
+                                    <li><a href="{% url 'home:career' %}">Careers</a></li>
+                                       
+                                    {% for ie in event  %}
+                                    <li aria-haspopup="true"><a href="{% url 'home:eventgallery' ie.slug %}">{{ie.name}}</a></li>
+                                    {% endfor %}
+                                    
+                                    <li><a href="{% url 'home:gallery' %}">Gallery</a></li>								                    
+                                    <li><a href="{% url 'home:testimonals' %}">Testimonials</a></li>								                    
+                                    <li><a href="{% url 'home:privacy' %}">Terms & Privacy Policy</a></li>
+                                    <li><a href="https://play.google.com/store/apps/details?id=com.dental.doctore_app" target="_blank">Download App</a></li>
+                                    <li><a href="https://app.advancedentalexport.com/warranty-card">Verify Warranty</a></li>
+                                </ul>
+
+
+                                <!-- MEGAMENU FEATURED NEWS -->
+                                <div class="col-lg-5 col-md-12 col-xs-12">
+
+                                    <!-- Title -->
+                                    <h3 class="title">Featured Post:</h3>
+
+                                    <!-- Image -->
+                                    <div class="fluid-width-video-wrapper"><img src="{{main.image.url}}" alt="featured-news" /></div>
+
+                                    <!-- Text -->
+                                    <h5 class="h5-xs"><a href="{% url 'blogd' main.slug %}">{{main.h1}}</a></h5>
+                                    <p class="wsmwnutxt">{{main.description}}
+                                    </p>
+
+                                </div>	<!-- END MEGAMENU FEATURED NEWS -->
+
+
+                                <!-- MEGAMENU LATEST NEWS -->
+                                <div class="col-lg-4 col-md-12 col-xs-12">
+
+                                    <!-- Title -->
+                                    <h3 class="title">Latest Blogs:</h3>
+
+                                    <!-- Latest News -->
+                                    <ul class="latest-news">
+                    
+                                        
+                                        {% for ie in latest %}
+                                            <!-- Post #1 -->
+                                        <li class="clearfix d-flex align-items-center">
+
+                                            <!-- Image -->
+                                            <img class="img-fluid" src="{{ie.image.url}}" alt="blog-post-preview" />
+
+                                            <!-- Text -->
+                                            <div class="post-summary">
+                                                <a href="{% url 'blogd' ie.slug %}">{{ie.description|truncatechars:'70'}} </a>
+                                               
+                                            </div>
+
+                                        </li>
+                                        
+                                        {% endfor %}
+                                            
+                                        
+                                    </ul>
+                                </div>	<!-- END MEGAMENU LATEST NEWS -->
+
+                                
+                            </div>  <!-- End row -->	
+                        </div>  <!-- End container -->	
+                    </div>  <!-- End wsmegamenu -->	
+                </li>	<!-- END MEGAMENU -->
+
+                
+                <!-- SIMPLE NAVIGATION LINK -->
+                
+                <li class="nl-simple"  aria-haspopup="true"><a href="{% url 'home:contact' %}">Contact</a></li>
+                
+                <li class="nl-simple header-btn clss"  ><a href="https://client.advancedentalexport.com">Client Login</a></li>
+                <li class="nl-simple header-btn d-none clss2"  ><a href="/api-logout/{{pk}}/{{did}}/">Logout</a></li>
+              
+                <li class="nl-simple header-btn" aria-haspopup="true"><a href="{% url 'home:stl' %}">Submit STL File</a></li>
+                
+                <!-- NAVIGATION MENU BUTTON -->
+                <li class="nl-simple header-btn" aria-haspopup="true"><a href="https://app.advancedentalexport.com/warranty-card" target="_blank">Verify Warranty</a></li>
+
+
+            </ul>
+        </nav>	<!-- END MAIN MENU -->
+
+    </div>
+</div>	<!-- END NAVIGATION MENU -->

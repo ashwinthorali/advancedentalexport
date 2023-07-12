@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block seo %}    
+<title>Contact - Advance Dental Export</title>
+<meta name="description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<link rel="canonical" href="https://advancedentalexport.com/contact/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Contact - Advance Dental Export" />
+<meta property="og:description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<meta property="og:url" content="https://advancedentalexport.com/" />
+<meta property="og:site_name" content="@advancedentalexport" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<meta name="twitter:title" content="Contact - Advance Dental Export" />
+
+{% endblock seo %}
+
+{% block css %}
+{% endblock css %}
+    
+
+
+{% block body %}
+	    	<!-- GOOGLE MAP
+			============================================= -->
+			<div  class="gmap w-100">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.3011808750475!2d72.84564231420534!3d21.219902286602988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04ef120e021eb%3A0x38b0e81455dedbe7!2sAdvance%20dental%20Export!5e0!3m2!1sen!2sin!4v1665697964873!5m2!1sen!2sin" class="gmap" style="border:0;width: 100%;min-height: 60vh;" allowfullscreen="" loading="lazy"></iframe>
+			</div>
+
+			<!-- CONTACTS-1
+			============================================= -->
+			<section id="contacts-1" class="wide-60 contacts-section division">				
+				<div class="container">
+					<!-- SECTION TITLE -->	
+					<div class="row">	
+						<div class="col-lg-10 offset-lg-1 section-title">	
+
+							<!-- Title 	-->	
+							<h3 class="h3-md steelblue-color">Have a Question? Get In Touch</h3>	
+
+							<!-- Text -->
+							<p> Fill up the form and we will reply you with 24 hours.
+							</p>
+								
+						</div>
+					</div>
+					<div class="row">	
+						<!-- CONTACTS INFO -->
+		 				<div class="col-md-5 col-lg-4">
+
+		 					<!-- General Information -->
+		 					<div class="contact-box mb-40">
+								<h5 class="h5-sm steelblue-color">India Office
+								</h5>
+								<p>Plot No.3/ 3-3/4, Dhuna House, Opp. Patel Nagar, A.K.Road, Varachha, Surat (Gujarat) India. Pincode-395008</p>
+								<p>Line 1: +91 84 88 88 88 77 </p>
+								<p>Line 2: +91 84 69 88 88 77</p>
+								<p>Email: <a href="mailto:info@advancedentalexport.com" class="blue-color">info@advancedentalexport.com
+
+								</a></p>
+		 					</div>
+
+		 					<!-- Patient Experience -->
+		 					<div class="contact-box mb-40">
+								<h5 class="h5-sm steelblue-color">Canada Office
+								</h5>
+								<p>Phone: Call at:
+									+1 306-290-9222</p>
+								<p>Email: <a href="mailto:advancedentalservice@gmail.com" class="blue-color">advancedentalservice@gmail.com</a></p>
+		 					</div>
+						</div>	<!-- END CONTACTS INFO -->
+
+
+						<!-- CONTACT FORM -->	
+				 		<div class="col-md-7 col-lg-8">
+				 			<div class="form-holder mb-40">
+				 				<form  method="POST" 
+								 action="{% url 'enquiry:contactd' %}" class="row contact-form2">
+								 {% csrf_token %}
+				                                            
+					                <!-- Contact Form Input -->
+					                <div id="input-name" class="col-md-12 col-lg-6">
+					                	<input type="text" name="name" class="form-control name" placeholder="Enter Your Name*" required> 
+					                </div>
+					                        
+					                <div id="input-email" class="col-md-12 col-lg-6">
+					                	<input type="text" name="email" class="form-control email" placeholder="Enter Your Email*" required> 
+					                </div>
+
+					                <div id="input-phone" class="col-md-12 col-lg-6">
+					                	<input type="tel" name="contact" class="form-control phone" placeholder="Enter Your Phone Number*" required> 
+					                </div>	
+
+					               
+
+					                <div id="input-subject" class="col-lg-6">
+					                	<input type="text" name="subject" class="form-control subject" placeholder="Subject*" required> 
+					                </div>					                          
+					                        
+					                <div id="input-message" class="col-lg-12 input-message">
+					                	<textarea class="form-control message" name="message" rows="6" placeholder="Your Message ..." required></textarea>
+					                </div> 
+					                                            
+					                <!-- Contact Form Button -->
+					                <div class="col-lg-12 mt-15 form-btn">  
+					                	<button type="submit" class="btn btn-blue blue-hover submit">Send Your Message</button> 
+					                </div>
+					                                                              
+					                
+				                                              
+				                </form> 
+
+				 			</div>	
+				 		</div> 	<!-- END CONTACT FORM -->	
+
+
+				 	</div>	<!-- End row -->			  
+ 
+
+				</div>	   <!-- End container -->		
+			</section>	<!-- END CONTACTS-1 -->
+
+
+
+
+{% endblock body %}
+    
+
+
+{% block javascript %}
+		
+{% endblock javascript %}
+    

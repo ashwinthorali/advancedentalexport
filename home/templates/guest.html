@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block seo %}   
+<title>Guest Posting - The Grand Indian Route</title> 
+<meta name="description" content="Guest Posting Platefrom For The Grand Indian Route">
+{% endblock seo %}
+
+{% block css %}
+{% endblock css %}
+    
+
+
+{% block body %}
+<section class="breadcrumb-outer text-center">
+	<div class="container">
+		<div class="breadcrumb-content">
+			<h2 class="white">Guest Posting</h2>
+			<nav aria-label="breadcrumb">
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Guest Posting</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="overlay"></div>
+</section>
+
+<div class="container card mar-top-30 mar-bottom-30">
+    <div class="content ">
+        <div class="add-box pad-30 ">
+            <div class="add-content " style="padding:20px;">
+              <h3 class="ored">Please Fill The Required Post</h3>
+              <hr>
+              <form action="{% url 'enquiry:guestposts' %}" method="POST">
+                {% csrf_token %}
+                <div class="row mar-top-5">
+                  <div class="col-md-12">
+                    <label class="row mar-top-5">Your Full Name (Author)</label>
+                    <input type="text" name="name">
+                  </div>
+                  <div class="col-md-6 mar-top-5">
+                    <label class="row mar-top-5">Your Phone Number</label>
+                    <input type="text" name="contact">
+                  </div>
+                  <div class="col-md-6 mar-top-5">
+                    <label class="row mar-top-5">Your Email Address</label>
+                    <input type="text" name="email">
+                  </div>
+                  <div class="col-md-6 mar-top-5">
+                    <label class="row mar-top-5">Google Doc Link</label>
+                    <input type="text" name="link">
+                  </div>
+                  <div class="col-md-6 mar-top-5">
+                    <label class="row mar-top-5">Keywords</label>
+                    <input type="text" name="keyword" placeholder="hotel, city">
+                  </div>
+                  <div class="col-md-12 mar-top-5">
+                    <label class="row mar-top-5">Message</label>
+                    <textarea name="message"></textarea>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-btn">
+                      <input type="submit" class="biz-btn biz-btn1 mar-top-5" value="Submit Post">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+{% endblock body %}
+    
+
+
+{% block javascript %}
+{% endblock javascript %}
+    

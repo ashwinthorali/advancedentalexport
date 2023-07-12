@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block seo %}    
+<title></title>
+<meta name="description" content="" />
+<link rel="canonical" href="https://www.myoneblog.com/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://www.myoneblog.com/" />
+<meta property="og:site_name" content="My One Blog" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:title" content="" />
+
+{% endblock seo %}
+
+{% block css %}
+{% endblock css %}
+    
+
+
+{% block body %}
+<div class="breadcrumb-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="breadcrumb-inner">
+					<div class="content">
+						<h1 class="title">{{data3.category}}</h1>
+						<ul class="page-list">
+							<li class="list-item"><a href="{% url 'home:home' %}">Home</a></li>
+							<li class="list-item"><a href="">Blogs</a></li>
+							<li class="list-item"><a href="{% url 'home:categoriesd' data3.slug %}">{{data3.category}}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="blog-area-wrapper Political-blog-grid-wrapper" data-padding-top="100" data-padding-bottom="100">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="two-column">
+					<div class="row">
+						
+                        {% for ie in data %}
+                        <div class="col-md-6 col-lg-6">
+							<div class="blog-grid-style-03 small-02">
+								<div class="img-box"><img src="{{ie.image.url}}" alt="{{ie.title}}"></div>
+								<div class="content">
+									<div class="post-meta">
+										<ul class="post-meta-list style-02">
+											<li class="post-meta-item"><a href="author-profile.html"><span class="text author">{{ie.author}}</span></a></li>
+											<li class="post-meta-item date"><span class="text">{{ie.published}}</span></li>
+										</ul>
+									</div>
+									<h4 class="title"><a href="{% url 'home:blogd' ie.slug %}">{{ie.title}}</a></h4></div>
+                                    <p>{{ie.description}}... <a href="{% url 'home:blogd' ie.slug %}">read more</a></p>
+							</div>
+						</div>
+						
+                        {% endfor %}
+                            
+
+						 {% if data.has_other_pages %}
+                            <div class="col-lg-12">
+                                <div class="pagination" data-padding-top="50">
+                                    
+                                    <ul class="pagination-list">
+                                        {% if data.has_previous %}
+                                        <li><a href="?page={{ data.previous_page_number }}" class="page-number disable left-arrow"><i class="las la-angle-left"></i></a></li>
+                                        {% else %}
+
+                                        <li><a href="javascript:void(0);" class="page-number disable left-arrow"><i class="las la-angle-left"></i></a></li>
+                                        {% endif %}
+                                        {% for i in data.paginator.page_range %}
+                                        {% if data.number == i %}
+                                        <li><span class="page-number current">{{i}}</span></li>
+                                        {% else %}  
+                                    
+                                        <li><a href="?page={{ i }}" class="page-number">{{i}}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% if data.has_next %}
+                                        <li><a href="?page={{ data.next_page_number }}" class="page-number able right-arrow"><i class="las la-angle-right"></i></a></li>
+                                        {% else %}
+
+                                        <li><a href="javascript:void(0);" class="page-number able right-arrow"><i class="las la-angle-right"></i></a></li>
+                                        {% endif %}
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        {% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-7 col-md-6 col-lg-4">
+				<div class="widget-area-wrapper">
+					{% include 'widget.html' %}
+					<div class="widget">
+						<div class="category style-01">
+							<h4 class="widget-title style-01">Categories</h4>
+							<ul class="widget-category-list">
+                                
+                                {% for ie in allcat %}
+                                <li class="single-item"><a href="{% url 'home:categoriesd' ie.slug %}" class="wrap"><span class="left">{{ie.category}}</span>
+                                     <span class="right">{{ie.tot}}</span></a></li>
+							
+                                {% endfor %}
+                                    
+                            </ul>
+						</div>
+					</div>
+					<div class="widget">
+						<div class="adds style-01">
+							<a href="#"><img src="assets/img/ads-banner/half-page/03.jpg" alt=""></a>
+						</div>
+					</div>
+					<div class="widget">
+						<div class="recent-post style-01">
+							<h4 class="widget-title style-01">Most Visted</h4>
+							<ul class="news-headline-list style-01">
+                                
+                                {% for ie in data2 %}
+                                <li class="news-heading-item">
+									<h3 class="title"><a href="{% url 'home:blogd' ie.slug %}">
+                                        {{ie.h1}}
+                                    </a></h3>
+									<div class="post-meta">
+										<ul class="post-meta-list style-02">
+											<li class="post-meta-item"><a href=""><span class="text author">{{ie.author}}</span></a></li>
+											<li class="post-meta-item date"><span class="text">{{ie.published}}</span></li>
+										</ul>
+									</div>
+								</li>
+						        {% endfor %}
+                                    
+                                
+							</ul>
+						</div>
+					</div>
+					<div class="widget">
+						<div class="tag style-01 black-bg">
+							<h4 class="widget-title style-01">tags</h4>
+							<ul class="tag-list">
+								<li class="single-tag-item"><a href="#">News</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+    
+
+
+{% block javascript %}
+		
+{% endblock javascript %}
+    

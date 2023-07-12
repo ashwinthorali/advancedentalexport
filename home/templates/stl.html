@@ -1,0 +1,244 @@
+{% extends 'base.html' %} 
+{% load static %} {% block seo %}
+<title>Submit STL File - Advance Dental Export</title>
+<meta name="description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<link rel="canonical" href="https://advancedentalexport.com/contact/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Contact - Advance Dental Export" />
+<meta property="og:description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<meta property="og:url" content="https://advancedentalexport.com/" />
+<meta property="og:site_name" content="@advancedentalexport" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Advance Dental Lab is a trusted dental care facility, providing quality and personalized dental services. For any query at Advance Dental Lab contact us here" />
+<meta name="twitter:title" content="Contact - Advance Dental Export" /> {% endblock seo %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/file.css' %}"> 
+{% endblock css %}
+{% block body %}
+<!-- CONTACTS-1
+			============================================= -->
+<section id="contacts-1" class="wide-60 contacts-section division">
+	<div class="container">
+		<!-- SECTION TITLE -->
+		<div class="row">
+			<div class="col-lg-10 offset-lg-1 section-title">
+				<!-- Title 	-->
+				<h3 class="h3-md steelblue-color">Submit STL Files</h3> </div>
+		</div>
+		<div class="row">
+			<!-- CONTACT FORM -->
+			<div class="col-md-12 col-lg-12">
+				<div class="form-holder mb-40">
+					<form class="row contact-form2" method="POST" enctype="multipart/form-data">
+						{% csrf_token %}
+						<!-- Contact Form Input -->
+						<div id="input-email" class="col-md-12 col-lg-6">
+							<input type="text" name="name" class="form-control email" placeholder="Enter Your Full Name*" required> </div>
+						<div id="input-phone" class="col-md-12 col-lg-6">
+							<input type="tel" name="contact" class="form-control phone" placeholder="Enter Your Phone Number*" required> </div>
+						<div id="input-message" class="col-lg-12 input-message">
+							<textarea class="form-control message" name="message" rows="6" placeholder="Your Message ..." required></textarea>
+						</div>
+						<div id="input-message" class="col-lg-12 input-message"> </div>
+						
+						<div class="col-lg-12">
+							<div class="p">
+								<div class="file-uploader__message-area border ">
+									<p>Select a file to upload</p>
+								  </div>
+								  <div class="file-chooser">
+									<input class="file-chooser__input" name="files" type="file" multiple>
+								  </div>
+							</div>
+						</div>
+						
+						<div class="col-lg-12 mt-15 form-btn">
+							<button type="submit" class="btn btn-blue blue-hover submit">Submit STL File</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- END CONTACT FORM -->
+		</div>
+		<!-- End row -->
+	</div>
+	<!-- End container -->
+</section>
+<!-- END CONTACTS-1 -->{% endblock body %} 
+{% block js %}
+	
+<script>
+	(function ($) {
+		$.fn.uploader = function (options) {
+			var settings = $.extend(
+			{
+				MessageAreaText: "Upload Your Files Here.",
+				MessageAreaTextWithFiles: "File List:",
+				DefaultErrorMessage: "Unable to open this file.",
+				BadTypeErrorMessage: "We cannot accept this file type at this time.",
+				acceptedFileTypes: [
+				"pdf",
+				"jpg",
+				"gif",
+				"jpeg",
+				"bmp",
+				"tif",
+				"tiff",
+				"png",
+				"xps",
+				"doc",
+				"docx",
+				"fax",
+				"wmp",
+				"ico",
+				"txt",
+				"cs",
+				"rtf",
+				"xls",
+				"xlsx"
+				]
+			},
+			options
+			);
+
+			var uploadId = 1;
+			//update the messaging
+			$(".file-uploader__message-area p").text(
+			options.MessageAreaText || settings.MessageAreaText
+			);
+
+			//create and add the file list and the hidden input list
+			var fileList = $('<ul class="file-list"></ul>');
+			var hiddenInputs = $('<div class="hidden-inputs hidden"></div>');
+			$(".file-uploader__message-area").after(fileList);
+			$(".file-list").after(hiddenInputs);
+
+			//when choosing a file, add the name to the list and copy the file input into the hidden inputs
+			$(".file-chooser__input").on("change", function () {
+			var files = document.querySelector(".file-chooser__input").files;
+
+			for (var i = 0; i < files.length; i++) {
+				console.log(files[i]);
+
+				var file = files[i];
+				var fileName = file.name.match(/([^\\\/]+)$/)[0];
+
+				//clear any error condition
+				$(".file-chooser").removeClass("error");
+				$(".error-message").remove();
+
+				//validate the file
+				var check = checkFile(fileName);
+				if (check === "valid") {
+				// move the 'real' one to hidden list
+				$(".hidden-inputs").append($(".file-chooser__input"));
+
+				//insert a clone after the hiddens (copy the event handlers too)
+				$(".file-chooser").append(
+					$(".file-chooser__input").clone({ withDataAndEvents: true })
+				);
+
+				//add the name and a remove button to the file-list
+				$(".file-list").append(
+					'<li style="display: none;"><span class="file-list__name">' +
+					fileName +
+					'</span><button class="removal-button" data-uploadid="' +
+					uploadId +
+					'"></button></li>'
+				);
+				$(".file-list").find("li:last").show(800);
+
+				//removal button handler
+				$(".removal-button").on("click", function (e) {
+					e.preventDefault();
+
+					//remove the corresponding hidden input
+					$(
+					'.hidden-inputs input[data-uploadid="' +
+						$(this).data("uploadid") +
+						'"]'
+					).remove();
+
+					//remove the name from file-list that corresponds to the button clicked
+					$(this)
+					.parent()
+					.hide("puff")
+					.delay(10)
+					.queue(function () {
+						$(this).remove();
+					});
+
+					//if the list is now empty, change the text back
+					if ($(".file-list li").length === 0) {
+					$(".file-uploader__message-area").text(
+						options.MessageAreaText || settings.MessageAreaText
+					);
+					}
+				});
+
+				//so the event handler works on the new "real" one
+				$(".hidden-inputs .file-chooser__input")
+					.removeClass("file-chooser__input")
+					.attr("data-uploadId", uploadId);
+
+				//update the message area
+				$(".file-uploader__message-area").text(
+					options.MessageAreaTextWithFiles ||
+					settings.MessageAreaTextWithFiles
+				);
+
+				uploadId++;
+				} else {
+				//indicate that the file is not ok
+				$(".file-chooser").addClass("error");
+				var errorText =
+					options.DefaultErrorMessage || settings.DefaultErrorMessage;
+
+				if (check === "badFileName") {
+					errorText =
+					options.BadTypeErrorMessage || settings.BadTypeErrorMessage;
+				}
+
+				$(".file-chooser__input").after(
+					'<p class="error-message">' + errorText + "</p>"
+				);
+				}
+			}
+			});
+
+			var checkFile = function (fileName) {
+			var accepted = "invalid",
+				acceptedFileTypes =
+				this.acceptedFileTypes || settings.acceptedFileTypes,
+				regex;
+
+			for (var i = 0; i < acceptedFileTypes.length; i++) {
+				regex = new RegExp("\\." + acceptedFileTypes[i] + "$", "i");
+
+				if (regex.test(fileName)) {
+				accepted = "valid";
+				break;
+				} else {
+				accepted = "badFileName";
+				}
+			}
+
+			return accepted;
+			};
+		};
+		})($);
+
+		//init
+		$(document).ready(function () {
+		console.log("hi");
+		$(".fileUploader").uploader({
+			MessageAreaText: "No files selected. Please select a file."
+		});
+		});
+
+</script>
+
+
+{% endblock js %}

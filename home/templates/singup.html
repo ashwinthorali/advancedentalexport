@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block seo %}    
+<title>Singup- The Grand Indian Route</title>
+<meta name="description" content="The Grand Indian Route Singup Page">
+{% endblock seo %}
+
+{% block css %}
+{% endblock css %}
+    
+
+
+{% block body %}
+<hr>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+             <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="login-content card mar-bottom-30 mar-top-30">
+                        <div class="login-title section-border">
+                            <h3>Register</h3></div>
+                        <div class="login-form section-border">
+                            <form  action="{% url 'enquiry:singup_user' %}" method="POST">
+                                {% csrf_token %}
+                                <label id="dbuser" class="text-left d-none ored" for="">User Already Exists.</label>
+                                
+                                <div class="form-group">
+                                    <input type="text" id="usernames" name="username" placeholder="User Name">
+                                </div>
+                                <div class="form-group">
+                                    <input name="email" type="email" placeholder="Email">
+                                </div>
+                                <label class="text-left ored" for="">Password must be 8 digit with a number and captial letter.</label>
+                               <div class="form-group">
+                                    <input id="password11" type="password" name="password1" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input id="password12" type="password" name="password2" placeholder="Re-Confirm  Password">
+                                </div>
+                                <label for="" id="dbpass" class="ored d-none">Password Doesn't Matches</label>
+                                
+                                <div class="form-btn"><input type="submit" value="REGISTER" class="biz-btn biz-btn1"></div>
+                            </form>
+                          
+                            <!-- <div class="form-group form-checkbox">
+                                <a href="#">Forgot password?</a></div> -->
+                                <div class="sign-up">
+                                    <p>Do not have an account?<a href="{% url 'home:loginUser' %}">Login</a></p>
+                                </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+    
+
+
+{% block javascript %}
+<script>
+    $('#usernames').keyup(function(){
+        name = $('#usernames').val();
+        $.ajax({
+            type: "GET",
+            url: "{% url 'home:checkup' %}",
+            data:{
+                'name':name
+            },
+            success: function (response) {
+                rslt = response.test;
+                console.log(rslt)
+                if (rslt == 0){
+                   $('#dbuser').removeClass('d-none');
+                }
+                else {
+                   $('#dbuser').addClass('d-none');
+                }   
+            },
+            error:function (data) {
+                console.log('An error occurred.');
+                
+            },
+        
+        });
+    });
+
+    $('#password12').keyup(function(){
+        val1 = $('#password11').val();
+        val2 = $('#password12').val();
+        if (val1 == val2){
+             $('#dbpass').addClass('d-none');
+        }
+        else {
+            $('#dbpass').removeClass('d-none');
+        }  
+    });
+    
+</script>   
+{% endblock javascript %}
+    
